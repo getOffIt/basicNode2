@@ -44,7 +44,6 @@ app.get("/json", function(req, res) {
 //  place it before all the routes !
 
 app.use(function(req, res, next) {
-    console.log("middleware is called");
     const message = req.method + " " + req.path + " - " + req.ip + " ";
     console.log(message);
     next();
