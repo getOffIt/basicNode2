@@ -34,7 +34,7 @@ app.get("/json", function(req, res) {
     if (process.env.MESSAGE_STYLE === "uppercase") {
         message = message.toUpperCase();
     }
-    res.json({"message": message});
+    // res.json({"message": message});
 })
 
 /** 6) Use the .env file to configure the app */
@@ -43,6 +43,13 @@ app.get("/json", function(req, res) {
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
 
+app.use(function(req, res, next) {
+    console.log("middleware is called");
+    const message = req.method + " " + req.path + " - " + req.ip + " ";
+    console.log(message);
+    next();
+
+})
 
 /** 8) Chaining middleware. A Time server */
 
