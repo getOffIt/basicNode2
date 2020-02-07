@@ -37,7 +37,7 @@ app.use(express.static(__dirname + "/public"))
 
 
 
-/** 5) serve JSON on a specific route */
+/** 5) serve JSON on a specific route &  6) Use the .env file to configure the app */
 
 app.get("/json", function(req, res) {
     
@@ -48,13 +48,16 @@ app.get("/json", function(req, res) {
     res.json({"message": message});
 })
 
-/** 6) Use the .env file to configure the app */
- 
- 
-
 
 /** 8) Chaining middleware. A Time server */
 
+app.get("/now", function(req, res, next) {
+    const currentTime = new Date().toString();
+    req.time = currentTime;
+    next();
+}, function(req, res) {
+    res.json({"time": req.time});
+});
 
 /** 9)  Get input from client - Route parameters */
 
