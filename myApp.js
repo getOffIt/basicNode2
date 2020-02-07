@@ -12,18 +12,19 @@ var app = express();
 
 console.log("Hello World");
 
-/** 2) A first working Express Server */
+/** 2) A first working Express Server and then /** 3) Serve an HTML file */ 
 
 app.get("/", function(req, res) {
     res.sendfile(__dirname + "/views/index.html");
 });
 
-/** 3) Serve an HTML file */
+
 
 
 
 /** 4) Serve static assets  */
 
+app.use(express.static(__dirname + "public/"))
 
 /** 5) serve JSON on a specific route */
 
