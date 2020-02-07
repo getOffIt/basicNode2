@@ -1,7 +1,7 @@
 {
-  "name": "basicNode2",
+  "name": "basicnode2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Just having fun and learning a new techno",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/getOffIt/basicNode2#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.17.1",
+    "fcc-express-bground": "https://github.com/freeCodeCamp/fcc-express-bground-pkg.git"
   }
 }
