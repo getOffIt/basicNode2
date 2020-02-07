@@ -7,6 +7,7 @@ var bGround = require('fcc-express-bground');
 var myApp = require('./myApp');
 var express = require('express');
 var app = express();
+require("dotenv").config();
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -21,7 +22,7 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, function(){
   bGround.log('Node is listening on port '+ port + '...')
 });
