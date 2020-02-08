@@ -1,7 +1,7 @@
 
 var express = require('express');
 var app = express();
-
+var moment = require('moment');
 // --> 7)  Mount the Logger middleware here
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
@@ -52,11 +52,16 @@ app.get("/json", function(req, res) {
 /** 8) Chaining middleware. A Time server */
 
 app.get("/now", function(req, res, next) {
-    const currentTime = new Date().toString();
-    req.time = currentTime;
+    
+    var currentTime = moment();
+    // res.json({"hi": currentTime.toString()});
+    const fromDate = new Date().toString();
+    const fromMoments = moment().add(8, "hours").format();
+    req.time = fromMoments;
+    req.timeFromDate = fromDate;
     next();
 }, function(req, res) {
-    res.json({"time": req.time});
+    res.json({fromDate: req.timeFromDate, fromTime: req.time});
 });
 
 /** 9)  Get input from client - Route parameters */
