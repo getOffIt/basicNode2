@@ -2,6 +2,7 @@
 var express = require('express');
 var app = express();
 var moment = require('moment');
+var bodyParser = require('body-parser');
 // --> 7)  Mount the Logger middleware here
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
@@ -12,6 +13,8 @@ app.use(function(req, res, next) {
     next();
 
 })
+
+app.use(bodyParser.urlencoded({extended: false}))
 
 // --> 11)  Mount the body-parser middleware  here
 
@@ -72,6 +75,7 @@ res.json({"echo": req.params.word})
 
 
 /** 10) Get input from client - Query parameters */
+
 // /name?first=<firstname>&last=<lastname>
 const getName = function (req, res) {
     res.json({ "name": req.query["first"] + " " + req.query["last"] });
